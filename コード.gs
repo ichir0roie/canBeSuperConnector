@@ -4,7 +4,7 @@ const values=dataSht.getDataRange().getValues();
 
 const clSt=1;
 const rwName=0;
-const rwRmd=1;
+const rwRmd=1;a
 
 function main(){
   let targets=[];
