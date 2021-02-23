@@ -4,7 +4,7 @@ const values=dataSht.getDataRange().getValues();
 
 const clSt=1;
 const rwName=0;
-const rwRmd=1;a
+const rwRmd=1;
 
 function main(){
   let targets=[];
@@ -15,6 +15,7 @@ function main(){
     let date=new Date()
     targets.push(new Target(values[i][rwName],values[i][rwRmd]));
   }
+
   targets=sortTargets(targets);
   
   console.log("test");
@@ -42,10 +43,14 @@ function createText(targets){
 
   text+="contact list\n";
 
+
   for(var i=0;i<targets.length;i++){
-    text+="name : "+targets[i].name+" , ";
-    var dateText=
-    text+="date : "+targets[i].date+"\n";
+    var textBuf="name : "+targets[i].name+"\n";
+
+    var dateText=Utilities.formatDate(targets[i].date,"Asia/Tokyo","yyyy/MM/dd");
+    textBuf+="  date : "+dateText+"\n";
+    text+=textBuf+"\n";
   }
+  text+="\n+++++++++++++++++\n"+sheetLink+"\n+++++++++++++++++\n";
   return text;
 }
